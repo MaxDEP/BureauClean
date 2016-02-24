@@ -35,7 +35,6 @@ namespace BureauClean_Projet
             this.lstNotification = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tmrEditNotify = new System.Windows.Forms.Timer(this.components);
-            this.btnBrowseFile = new System.Windows.Forms.Button();
             this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.dlgOpenDir = new System.Windows.Forms.FolderBrowserDialog();
             this.dlgSaveFile = new System.Windows.Forms.SaveFileDialog();
@@ -94,18 +93,6 @@ namespace BureauClean_Projet
             this.tmrEditNotify.Enabled = true;
             this.tmrEditNotify.Tick += new System.EventHandler(this.tmrEditNotify_Tick);
             // 
-            // btnBrowseFile
-            // 
-            this.btnBrowseFile.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnBrowseFile.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBrowseFile.Location = new System.Drawing.Point(287, 29);
-            this.btnBrowseFile.Name = "btnBrowseFile";
-            this.btnBrowseFile.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowseFile.TabIndex = 8;
-            this.btnBrowseFile.Text = "Browse";
-            this.btnBrowseFile.UseVisualStyleBackColor = false;
-            this.btnBrowseFile.Click += new System.EventHandler(this.btnBrowseFile_Click);
-            // 
             // dlgOpenDir
             // 
             this.dlgOpenDir.RootFolder = System.Environment.SpecialFolder.MyComputer;
@@ -125,7 +112,6 @@ namespace BureauClean_Projet
             this.Controls.Add(this.lblFile);
             this.Controls.Add(this.txtFile);
             this.Controls.Add(this.btnWatchFile);
-            this.Controls.Add(this.btnBrowseFile);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmNotifier";
@@ -144,7 +130,6 @@ namespace BureauClean_Projet
         private System.Windows.Forms.ListBox lstNotification;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer tmrEditNotify;
-        private System.Windows.Forms.Button btnBrowseFile;
         private System.Windows.Forms.OpenFileDialog dlgOpenFile;
         private System.Windows.Forms.FolderBrowserDialog dlgOpenDir;
         private System.Windows.Forms.SaveFileDialog dlgSaveFile;

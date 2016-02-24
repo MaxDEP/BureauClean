@@ -15,6 +15,7 @@ namespace BureauClean_Projet
         private bool m_bDirty;
         private System.IO.FileSystemWatcher m_Watcher;
         private bool m_bIsWatching;
+        string path_desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         public frmNotifier()
         {
@@ -43,8 +44,7 @@ namespace BureauClean_Projet
 
                 m_Watcher = new System.IO.FileSystemWatcher();
                 m_Watcher.Filter = "*.*";
-                m_Watcher.Path = txtFile.Text + "\\";
-                if (chkSubFolder.Checked)
+                m_Watcher.Path = path_desktop;
 
                 m_Watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
                                      | NotifyFilters.FileName | NotifyFilters.DirectoryName;
@@ -95,15 +95,6 @@ namespace BureauClean_Projet
                 lstNotification.Items.Add(m_Sb.ToString());
                 lstNotification.EndUpdate();
                 m_bDirty = false;
-            }
-        }
-
-        private void btnBrowseFile_Click(object sender, EventArgs e)
-        {
-            DialogResult resDialog = dlgOpenDir.ShowDialog();
-            if (resDialog.ToString() == "OK")
-            {
-                txtFile.Text = dlgOpenDir.SelectedPath;
             }
         }
 
