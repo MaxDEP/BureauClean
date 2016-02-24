@@ -12,7 +12,7 @@ namespace BureauClean_Projet
     public partial class frmNotifier : Form
     {
         private StringBuilder m_Sb;
-        private bool m_bDirty;test
+        private bool m_bDirty;
         private System.IO.FileSystemWatcher m_Watcher;
         private bool m_bIsWatching;
 
@@ -100,21 +100,10 @@ namespace BureauClean_Projet
 
         private void btnBrowseFile_Click(object sender, EventArgs e)
         {
-            if (rdbDir.Checked)
+            DialogResult resDialog = dlgOpenDir.ShowDialog();
+            if (resDialog.ToString() == "OK")
             {
-                DialogResult resDialog = dlgOpenDir.ShowDialog();
-                if (resDialog.ToString() == "OK")
-                {
-                    txtFile.Text = dlgOpenDir.SelectedPath;
-                }
-            }
-            else
-            {
-                DialogResult resDialog = dlgOpenFile.ShowDialog();
-                if (resDialog.ToString() == "OK")
-                {
-                    txtFile.Text = dlgOpenFile.FileName;
-                }
+                txtFile.Text = dlgOpenDir.SelectedPath;
             }
         }
 
@@ -130,14 +119,6 @@ namespace BureauClean_Projet
                     sw.WriteLine(sItem);
                 }
                 sw.Close();
-            }
-        }
-
-        private void rdbDir_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdbDir.Checked == true)
-            {
-                chkSubFolder.Enabled = true;
             }
         }
 
