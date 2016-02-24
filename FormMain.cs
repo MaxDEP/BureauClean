@@ -11,48 +11,48 @@ namespace BureauClean_Projet
 {
     public partial class Setup_BureauClean : Form
     {
-        private StringBuilder m_Sb;
-        private bool m_bDirty;
-        private System.IO.FileSystemWatcher m_Watcher;
-        private bool m_bIsWatching;
+        private StringBuilder string_log;
+        private bool log_present;
+        private FileSystemWatcher checker;
+        private bool check_on;
         string path_desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         public Setup_BureauClean()
         {
             InitializeComponent();
             versionToolStripMenuItem.Text = "Version : " + Application.ProductVersion;
-            m_Sb = new StringBuilder();
-            m_bDirty = false;
-            m_bIsWatching = false;
+            string_log = new StringBuilder();
+            log_present = false;
+            check_on = false;
             check();
         }
         public void check()
         {
-            m_bIsWatching = true;
+            check_on = true;
             btnCheckStatut.PerformClick();
             btnCheckStatut.BackColor = Color.Red;
             btnCheckStatut.Text = "Stop checking";
 
-            m_Watcher = new System.IO.FileSystemWatcher();
-            m_Watcher.Filter = "*.*";
-            m_Watcher.Path = path_desktop + "\\test\\";
+            checker = new System.IO.FileSystemWatcher();
+            checker.Filter = "*.*";
+            checker.Path = path_desktop + "\\test\\";
 
-            m_Watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+            checker.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
                                  | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-            m_Watcher.Changed += new FileSystemEventHandler(OnChanged);
-            m_Watcher.Created += new FileSystemEventHandler(OnChanged);
-            m_Watcher.Deleted += new FileSystemEventHandler(OnChanged);
-            m_Watcher.Renamed += new RenamedEventHandler(OnRenamed);
-            m_Watcher.EnableRaisingEvents = true;
+            checker.Changed += new FileSystemEventHandler(OnChanged);
+            checker.Created += new FileSystemEventHandler(OnChanged);
+            checker.Deleted += new FileSystemEventHandler(OnChanged);
+            checker.Renamed += new RenamedEventHandler(OnRenamed);
+            checker.EnableRaisingEvents = true;
         }
 
         private void btnWatchFile_Click(object sender, EventArgs e)
         {
-            if (m_bIsWatching)
+            if (check_on)
             {
-                m_bIsWatching = false;
-                m_Watcher.EnableRaisingEvents = false;
-                m_Watcher.Dispose();
+                check_on = false;
+                checker.EnableRaisingEvents = false;
+                checker.Dispose();
                 btnCheckStatut.BackColor = Color.LightSkyBlue;
                 btnCheckStatut.Text = "Start checking";
                 
@@ -65,43 +65,43 @@ namespace BureauClean_Projet
 
         private void OnChanged(object sender, FileSystemEventArgs e)
         {
-            if (!m_bDirty)
+            if (!log_present)
             {
-                m_Sb.Remove(0, m_Sb.Length);
-                m_Sb.Append(e.FullPath);
-                m_Sb.Append("- is ");
-                m_Sb.Append(e.ChangeType.ToString());
-                m_Sb.Append("- le  ");
-                m_Sb.Append(DateTime.Now.ToString());
-                m_bDirty = true;
+                string_log.Remove(0, string_log.Length);
+                string_log.Append(e.FullPath);
+                string_log.Append("- is ");
+                string_log.Append(e.ChangeType.ToString());
+                string_log.Append("- le  ");
+                string_log.Append(DateTime.Now.ToString());
+                log_present = true;
             }
         }
 
         private void OnRenamed(object sender, RenamedEventArgs e)
         {
-            if (!m_bDirty)
+            if (!log_present)
             {
-                m_Sb.Remove(0, m_Sb.Length);
-                m_Sb.Append(e.OldFullPath);
-                m_Sb.Append("- is ");
-                m_Sb.Append(e.ChangeType.ToString());
-                m_Sb.Append(" ");
-                m_Sb.Append("à ");
-                m_Sb.Append(e.Name);
-                m_Sb.Append("    ");
-                m_Sb.Append(DateTime.Now.ToString());
-                m_bDirty = true;
+                string_log.Remove(0, string_log.Length);
+                string_log.Append(e.OldFullPath);
+                string_log.Append("- is ");
+                string_log.Append(e.ChangeType.ToString());
+                string_log.Append(" ");
+                string_log.Append("à ");
+                string_log.Append(e.Name);
+                string_log.Append("    ");
+                string_log.Append(DateTime.Now.ToString());
+                log_present = true;
             }            
         }
 
         private void tmrEditNotify_Tick(object sender, EventArgs e)
         {
-            if (m_bDirty)
+            if (log_present)
             {
                 suiviBureau.BeginUpdate();
-                suiviBureau.Items.Add(m_Sb.ToString());
+                suiviBureau.Items.Add(string_log.ToString());
                 suiviBureau.EndUpdate();
-                m_bDirty = false;
+                log_present = false;
             }
         }
 
@@ -112,11 +112,6 @@ namespace BureauClean_Projet
         }
 
         private void suiviBureau_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
         {
 
         }

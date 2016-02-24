@@ -73,7 +73,6 @@ namespace BureauClean_Projet
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Modifications:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // tmrEditNotify
             // 
