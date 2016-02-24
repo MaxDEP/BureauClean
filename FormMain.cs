@@ -20,6 +20,7 @@ namespace BureauClean_Projet
         public Setup_BureauClean()
         {
             InitializeComponent();
+            versionToolStripMenuItem.Text = "Version : " + Application.ProductVersion;
             m_Sb = new StringBuilder();
             m_bDirty = false;
             m_bIsWatching = false;
@@ -97,15 +98,25 @@ namespace BureauClean_Projet
         {
             if (m_bDirty)
             {
-                lstNotification.BeginUpdate();
-                lstNotification.Items.Add(m_Sb.ToString());
-                lstNotification.EndUpdate();
+                suiviBureau.BeginUpdate();
+                suiviBureau.Items.Add(m_Sb.ToString());
+                suiviBureau.EndUpdate();
                 m_bDirty = false;
             }
         }
 
 
         private void frmNotifier_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void suiviBureau_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
