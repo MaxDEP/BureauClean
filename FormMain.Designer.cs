@@ -33,9 +33,6 @@ namespace BureauClean_Projet
             this.lstNotification = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tmrEditNotify = new System.Windows.Forms.Timer(this.components);
-            this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.dlgOpenDir = new System.Windows.Forms.FolderBrowserDialog();
-            this.dlgSaveFile = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // btnCheckStatut
@@ -74,15 +71,6 @@ namespace BureauClean_Projet
             this.tmrEditNotify.Enabled = true;
             this.tmrEditNotify.Tick += new System.EventHandler(this.tmrEditNotify_Tick);
             // 
-            // dlgOpenDir
-            // 
-            this.dlgOpenDir.RootFolder = System.Environment.SpecialFolder.MyComputer;
-            // 
-            // dlgSaveFile
-            // 
-            this.dlgSaveFile.DefaultExt = "log";
-            this.dlgSaveFile.Filter = "LogFiles|*.log";
-            // 
             // Setup_BureauClean
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -106,9 +94,6 @@ namespace BureauClean_Projet
         private System.Windows.Forms.ListBox lstNotification;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer tmrEditNotify;
-        private System.Windows.Forms.OpenFileDialog dlgOpenFile;
-        private System.Windows.Forms.FolderBrowserDialog dlgOpenDir;
-        private System.Windows.Forms.SaveFileDialog dlgSaveFile;
     }
 }
 
