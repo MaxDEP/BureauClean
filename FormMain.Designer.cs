@@ -29,6 +29,7 @@ namespace BureauClean_Projet
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Setup_BureauClean));
             this.btnCheckStatut = new System.Windows.Forms.Button();
             this.suiviBureau = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -127,6 +128,7 @@ namespace BureauClean_Projet
             this.Controls.Add(this.btnCheckStatut);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Setup_BureauClean";
