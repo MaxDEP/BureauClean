@@ -107,20 +107,6 @@ namespace BureauClean_Projet
             }
         }
 
-        private void btnLog_Click(object sender, EventArgs e)
-        {
-            DialogResult resDialog = dlgSaveFile.ShowDialog();
-            if (resDialog.ToString() == "OK")
-            {
-                FileInfo fi = new FileInfo(dlgSaveFile.FileName);
-                StreamWriter sw = fi.CreateText();
-                foreach (string sItem in lstNotification.Items)
-                {
-                    sw.WriteLine(sItem);
-                }
-                sw.Close();
-            }
-        }
 
         private void frmNotifier_Load(object sender, EventArgs e)
         {

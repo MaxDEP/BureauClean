@@ -38,7 +38,6 @@ namespace BureauClean_Projet
             this.btnBrowseFile = new System.Windows.Forms.Button();
             this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.dlgOpenDir = new System.Windows.Forms.FolderBrowserDialog();
-            this.btnLog = new System.Windows.Forms.Button();
             this.dlgSaveFile = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
@@ -111,18 +110,6 @@ namespace BureauClean_Projet
             // 
             this.dlgOpenDir.RootFolder = System.Environment.SpecialFolder.MyComputer;
             // 
-            // btnLog
-            // 
-            this.btnLog.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnLog.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLog.Location = new System.Drawing.Point(12, 346);
-            this.btnLog.Name = "btnLog";
-            this.btnLog.Size = new System.Drawing.Size(119, 23);
-            this.btnLog.TabIndex = 9;
-            this.btnLog.Text = "Dump To Log";
-            this.btnLog.UseVisualStyleBackColor = false;
-            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
-            // 
             // dlgSaveFile
             // 
             this.dlgSaveFile.DefaultExt = "log";
@@ -133,7 +120,6 @@ namespace BureauClean_Projet
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 457);
-            this.Controls.Add(this.btnLog);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lstNotification);
             this.Controls.Add(this.lblFile);
@@ -161,7 +147,6 @@ namespace BureauClean_Projet
         private System.Windows.Forms.Button btnBrowseFile;
         private System.Windows.Forms.OpenFileDialog dlgOpenFile;
         private System.Windows.Forms.FolderBrowserDialog dlgOpenDir;
-        private System.Windows.Forms.Button btnLog;
         private System.Windows.Forms.SaveFileDialog dlgSaveFile;
     }
 }
