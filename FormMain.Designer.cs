@@ -1,6 +1,6 @@
 namespace BureauClean_Projet
 {
-    partial class frmNotifier
+    partial class Setup_BureauClean
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace BureauClean_Projet
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnWatchFile = new System.Windows.Forms.Button();
+            this.btnCheckStatut = new System.Windows.Forms.Button();
             this.lstNotification = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tmrEditNotify = new System.Windows.Forms.Timer(this.components);
@@ -38,25 +38,25 @@ namespace BureauClean_Projet
             this.dlgSaveFile = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
-            // btnWatchFile
+            // btnCheckStatut
             // 
-            this.btnWatchFile.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnWatchFile.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnWatchFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnWatchFile.Location = new System.Drawing.Point(12, 12);
-            this.btnWatchFile.Name = "btnWatchFile";
-            this.btnWatchFile.Size = new System.Drawing.Size(119, 23);
-            this.btnWatchFile.TabIndex = 4;
-            this.btnWatchFile.Text = "Start Watching";
-            this.btnWatchFile.UseVisualStyleBackColor = false;
-            this.btnWatchFile.Click += new System.EventHandler(this.btnWatchFile_Click);
+            this.btnCheckStatut.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnCheckStatut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCheckStatut.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCheckStatut.Location = new System.Drawing.Point(12, 12);
+            this.btnCheckStatut.Name = "btnCheckStatut";
+            this.btnCheckStatut.Size = new System.Drawing.Size(523, 23);
+            this.btnCheckStatut.TabIndex = 4;
+            this.btnCheckStatut.Text = "Start Watching";
+            this.btnCheckStatut.UseVisualStyleBackColor = false;
+            this.btnCheckStatut.Click += new System.EventHandler(this.btnWatchFile_Click);
             // 
             // lstNotification
             // 
             this.lstNotification.FormattingEnabled = true;
             this.lstNotification.Location = new System.Drawing.Point(12, 63);
             this.lstNotification.Name = "lstNotification";
-            this.lstNotification.Size = new System.Drawing.Size(461, 225);
+            this.lstNotification.Size = new System.Drawing.Size(523, 225);
             this.lstNotification.TabIndex = 5;
             // 
             // label3
@@ -83,18 +83,18 @@ namespace BureauClean_Projet
             this.dlgSaveFile.DefaultExt = "log";
             this.dlgSaveFile.Filter = "LogFiles|*.log";
             // 
-            // frmNotifier
+            // Setup_BureauClean
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 457);
+            this.ClientSize = new System.Drawing.Size(547, 457);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lstNotification);
-            this.Controls.Add(this.btnWatchFile);
+            this.Controls.Add(this.btnCheckStatut);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "frmNotifier";
-            this.Text = "File/Directory Change Notifier";
+            this.Name = "Setup_BureauClean";
+            this.Text = "Configuration de BureauClean";
             this.Load += new System.EventHandler(this.frmNotifier_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -102,7 +102,7 @@ namespace BureauClean_Projet
         }
 
         #endregion
-        private System.Windows.Forms.Button btnWatchFile;
+        private System.Windows.Forms.Button btnCheckStatut;
         private System.Windows.Forms.ListBox lstNotification;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer tmrEditNotify;

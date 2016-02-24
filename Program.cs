@@ -14,7 +14,7 @@ namespace BureauClean_Projet
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmNotifier());
+            Application.Run(new Setup_BureauClean());
         }
     }
 }
