@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace BureauClean_Projet
 {
@@ -71,6 +73,35 @@ namespace BureauClean_Projet
                 string_log.Append(e.FullPath);
                 string_log.Append("- is ");
                 string_log.Append(e.ChangeType.ToString());
+                string_log.Append("- le  ");
+                string_log.Append(DateTime.Now.ToString());
+                if(e.ChangeType.ToString() == "Created")
+                {
+                    System.Threading.Thread.Sleep(10000);
+                    cleaning(e.FullPath, e.Name);
+                }
+                log_present = true;
+            }
+        }
+
+        public void cleaning(string url_file, string name_file)
+        {
+            string url_img = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            if (File.Exists(url_file))
+            {
+                File.Move(url_file, url_img + "\\" + name_file);
+            }else
+            {
+                var directory = new DirectoryInfo(path_desktop + "\\test\\");
+                var file_rename = directory.GetFiles().OrderByDescending(f => f.LastWriteTime).First();
+                File.Move(file_rename.FullName.ToString(), url_img + "\\" + file_rename.Name);
+            }
+            if (!log_present)
+            {
+                string_log.Remove(0, string_log.Length);
+                string_log.Append(name_file);
+                string_log.Append("- is ");
+                string_log.Append("Moved");
                 string_log.Append("- le  ");
                 string_log.Append(DateTime.Now.ToString());
                 log_present = true;
