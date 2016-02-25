@@ -86,16 +86,19 @@ namespace BureauClean_Projet
 
         public void cleaning(string url_file, string name_file)
         {
-            string url_img = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            if (File.Exists(url_file))
+            var url_folder = new Dictionary<Tuple<string, string, string, string, string, string>, string>
             {
-                File.Move(url_file, url_img + "\\" + name_file);
-            }else
+                [new Tuple<string, string, string, string, string, string>("png","jpg", "pcd", "tif", "jpeg", "gif")] = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                //[new Tuple<string, string>("", "")] = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
+            if (!File.Exists(url_file))
             {
                 var directory = new DirectoryInfo(path_desktop + "\\test\\");
-                var file_rename = directory.GetFiles().OrderByDescending(f => f.LastWriteTime).First();
-                File.Move(file_rename.FullName.ToString(), url_img + "\\" + file_rename.Name);
+                name_file = directory.GetFiles().OrderByDescending(f => f.LastWriteTime).First().Name;
+                url_file = directory.GetFiles().OrderByDescending(f => f.LastWriteTime).First().FullName;
             }
+            string ext = Path.GetExtension(@url_file);
+            File.Move(url_file, url_folder[ext] + "\\" + name_file);
             if (!log_present)
             {
                 string_log.Remove(0, string_log.Length);
