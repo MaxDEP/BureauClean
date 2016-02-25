@@ -83,22 +83,41 @@ namespace BureauClean_Projet
                 log_present = true;
             }
         }
-
+        static string getFolder_byext(string url_file)
+        {
+            var url_folder = new Dictionary<string, string>
+            {
+                //Images
+                [".png"] = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                [".gif"] = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                [".jpg"] = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                [".jpeg"] = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                //Documents textes
+                [".txt"] = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                [".doc"] = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                [".odt"] = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                [".docx"] = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                //Vidéos
+                [".avi"] = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
+                [".mp4"] = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
+                [".mkv"] = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
+                [".webm"] = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
+                //Musiques
+                [".mp3"] = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
+            };
+            string ext = Path.GetExtension(@url_file);
+            return url_folder[ext];
+        }
         public void cleaning(string url_file, string name_file)
         {
-            var url_folder = new Dictionary<Tuple<string, string, string, string, string, string>, string>
-            {
-                [new Tuple<string, string, string, string, string, string>("png","jpg", "pcd", "tif", "jpeg", "gif")] = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-                //[new Tuple<string, string>("", "")] = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-            };
             if (!File.Exists(url_file))
             {
                 var directory = new DirectoryInfo(path_desktop + "\\test\\");
                 name_file = directory.GetFiles().OrderByDescending(f => f.LastWriteTime).First().Name;
                 url_file = directory.GetFiles().OrderByDescending(f => f.LastWriteTime).First().FullName;
             }
-            string ext = Path.GetExtension(@url_file);
-            File.Move(url_file, url_folder[ext] + "\\" + name_file);
+            string url_folder = getFolder_byext(url_file);
+            File.Move(url_file, url_folder + "\\" + name_file);
             if (!log_present)
             {
                 string_log.Remove(0, string_log.Length);
