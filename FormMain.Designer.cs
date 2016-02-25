@@ -39,6 +39,7 @@ namespace BureauClean_Projet
             this.liveStatutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configRangementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,6 +118,13 @@ namespace BureauClean_Projet
             this.versionToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.versionToolStripMenuItem.Text = "Version ";
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "BureuClean";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            // 
             // Setup_BureauClean
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -150,6 +158,7 @@ namespace BureauClean_Projet
         private System.Windows.Forms.ToolStripMenuItem liveStatutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configRangementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

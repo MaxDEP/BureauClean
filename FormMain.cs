@@ -13,6 +13,8 @@ namespace BureauClean_Projet
 {
     public partial class Setup_BureauClean : Form
     {
+        private System.Windows.Forms.ContextMenu contextMenu1;
+        private System.Windows.Forms.MenuItem menuItem1;
         private StringBuilder string_log;
         private bool log_present;
         private FileSystemWatcher checker;
@@ -22,6 +24,13 @@ namespace BureauClean_Projet
         public Setup_BureauClean()
         {
             InitializeComponent();
+            this.contextMenu1 = new System.Windows.Forms.ContextMenu();
+            this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.contextMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.menuItem1 });
+            this.menuItem1.Index = 0;
+            this.menuItem1.Text = "Stop";
+            this.menuItem1.Click += new System.EventHandler(this.menuItem1_Click);
+            notifyIcon1.ContextMenu = this.contextMenu1;
             versionToolStripMenuItem.Text = "Version : " + Application.ProductVersion;
             string_log = new StringBuilder();
             log_present = false;
@@ -167,6 +176,18 @@ namespace BureauClean_Projet
         private void suiviBureau_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+                this.WindowState = FormWindowState.Normal;
+
+            this.Activate();
+        }
+        private void menuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
