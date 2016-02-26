@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<FolderExtensionsClassification>
+  <Folder Path="">
+    <FileExt Extension="png"/>
+    <FileExt Extension="jpg"/>
+    <FileExt Extension="gif"/>
+    <FileExt Extension="jpeg"/>
+  </Folder>
+  <Folder Path="">
+    <FileExt Extension="txt"/>
+    <FileExt Extension="doc"/>
+    <FileExt Extension="docx"/>
+    <FileExt Extension="odt"/>
+  </Folder>
+</FolderExtensionsClassification>
